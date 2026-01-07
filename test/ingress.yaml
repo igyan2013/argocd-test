@@ -8,13 +8,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: test-nginx.local
+    - host: test-nginx2.local
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: nginx
+                name: nginx2
                 port:
-                  number: 8099
+                  number: 8088

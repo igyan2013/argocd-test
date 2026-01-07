@@ -18,7 +18,7 @@ spec:
       - image: nginx:latest
         name: nginx2
         ports:
-        - containerPort: 8099
+        - containerPort: 8088
           name: web
         volumeMounts:
           - name: config-vol

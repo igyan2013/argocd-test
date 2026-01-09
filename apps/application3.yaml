@@ -1,0 +1,19 @@
+# declarative/app-of-apps/app-of-apps.yml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3-example
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/igyan2013/argocd-test.git
+    targetRevision: HEAD
+    path: test-nginx1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

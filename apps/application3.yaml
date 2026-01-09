@@ -10,6 +10,10 @@ spec:
     repoURL: https://github.com/igyan2013/argocd-test.git
     targetRevision: HEAD
     path: test-nginx1
+    helm:
+      valueFiles:
+        - values.yaml # the main values file
+        - values-tag.yaml # this is your extra values file
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

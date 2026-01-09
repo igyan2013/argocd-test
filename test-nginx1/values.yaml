@@ -25,7 +25,7 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
     # Example annotation for NGINX Ingress controller:
     # nginx.ingress.kubernetes.io/rewrite-target: /
-
+  ingressClassName: nginx
   # Define the hosts and paths to route traffic
   hosts:
     - host: "test-nginx3.local"

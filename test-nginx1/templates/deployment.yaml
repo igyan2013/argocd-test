@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "test-nginx1.fullname" . }}-deployment
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "test-nginx1.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "test-nginx1.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "test-nginx1.fullname" . }}
+    spec:
+      containers:
+      - name: app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.service.port }}

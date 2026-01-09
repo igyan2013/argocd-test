@@ -1,0 +1,41 @@
+replicaCount: 2
+namespace: default
+
+image:
+  repository: igyan/test_nginx
+  tag: v1
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 8888
+
+# Configuration for the Ingress resource
+ingress:
+  enabled: true
+  # Used to specify the Ingress Controller (e.g., nginx, traefik, etc.)
+  # Uncomment the line below if your cluster requires a specific class name
+  # ingressClassName: "nginx"
+
+  # Additional annotations for the Ingress metadata
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # Example annotation for NGINX Ingress controller:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+
+  # Define the hosts and paths to route traffic
+  hosts:
+    - host: "test-nginx3.local"
+      paths:
+        - path: /
+          pathType: Prefix # Can be "Prefix", "Exact", or "ImplementationSpecific"
+
+  # TLS configuration
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - "chart-example.local"  

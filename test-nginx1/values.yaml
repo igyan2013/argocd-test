@@ -3,7 +3,7 @@ namespace: default
 
 image:
   repository: igyan/test_nginx
-  tag:
+  tag: v1
 
 
 imagePullSecrets: []

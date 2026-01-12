@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx2
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: nginx2
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx2
     spec:
       containers:
       - image: nginx:latest
-        name: nginx
+        name: nginx2
         ports:
-        - containerPort: 8099
+        - containerPort: 8088
           name: web
         volumeMounts:
           - name: config-vol
@@ -26,7 +26,7 @@ spec:
       volumes:
         - name: config-vol
           configMap:
-            name: nginx-config
+            name: nginx2-config
             items:
               - key: nginx.conf
                 path: nginx.conf
